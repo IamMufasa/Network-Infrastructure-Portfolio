@@ -62,4 +62,4 @@ For more information or to discuss this portfolio, please reach out through the 
 
 ---
 
-*This portfolio is designed to demonstrate relevant experience for the Network Engineer I position at the University of Florida.*
+*This portfolio is designed to demonstrate relevant experience for the Network Engineer *
