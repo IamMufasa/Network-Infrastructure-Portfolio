@@ -1,7 +1,7 @@
 
 # Network Infrastructure Portfolio
 
-A comprehensive demonstration of network engineering skills and experience relevant to the Network Engineer I position at the University of Florida.
+A comprehensive demonstration of network engineering skills and experience relevant to the Network Engineer.
 
 ## Overview
 
