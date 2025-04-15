@@ -1,0 +1,101 @@
+! Core Switch Configuration Example
+! Demonstrates CCNA/CCNP level knowledge for Network Engineer I position
+
+hostname UF-CORE-SW01
+!
+! VTP Configuration
+vtp domain UF-NETWORK
+vtp mode server
+vtp version 2
+!
+! Spanning Tree Configuration
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 4096
+!
+! Management VLAN
+vlan 10
+ name MANAGEMENT
+!
+! Data VLANs
+vlan 20
+ name STAFF
+vlan 30
+ name FACULTY
+vlan 40
+ name STUDENTS
+vlan 50
+ name GUESTS
+!
+! Voice VLAN
+vlan 100
+ name VOICE
+!
+! Special Purpose VLANs
+vlan 200
+ name DMZ
+vlan 900
+ name NATIVE
+!
+! Interface to Distribution Switch 1
+interface TenGigabitEthernet1/1
+ description UPLINK-TO-DIST-SW01
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,50,100,200
+ switchport mode trunk
+ spanning-tree guard root
+ no shutdown
+!
+! Interface to Distribution Switch 2
+interface TenGigabitEthernet1/2
+ description UPLINK-TO-DIST-SW02
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,50,100,200
+ switchport mode trunk
+ spanning-tree guard root
+ no shutdown
+!
+! Layer 3 Interface for Management VLAN
+interface Vlan10
+ description Management-Network
+ ip address 10.10.10.1 255.255.255.0
+ ip helper-address 10.1.1.10
+ no shutdown
+!
+! OSPF Configuration
+router ospf 1
+ router-id 10.10.10.1
+ network 10.10.10.0 0.0.0.255 area 0
+ passive-interface default
+ no passive-interface Vlan10
+!
+! HSRP Configuration for High Availability
+interface Vlan10
+ standby 10 ip 10.10.10.254
+ standby 10 priority 110
+ standby 10 preempt
+!
+! Access Control Lists
+ip access-list extended MANAGEMENT-ACCESS
+ permit tcp any host 10.10.10.1 eq 22
+ permit tcp any host 10.10.10.1 eq 443
+ deny ip any any log
+!
+! Apply ACL to Management Interface
+interface Vlan10
+ ip access-group MANAGEMENT-ACCESS in
+!
+! NTP Configuration
+ntp server 10.1.1.5
+!
+! SNMP Configuration
+snmp-server community UF-RO-STRING RO
+snmp-server community UF-RW-STRING RW
+snmp-server location "UF Main Campus, Gainesville, FL"
+snmp-server contact "Network Operations Center"
+!
+! Save Configuration
+end
+write memory

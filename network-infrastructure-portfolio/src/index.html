@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Infrastructure Portfolio</title>
+    <style>
+        /* Apple-inspired aesthetic */
+        :root {
+            --primary-color: #0071e3;
+            --secondary-color: #86868b;
+            --background-color: #f5f5f7;
+            --text-color: #1d1d1f;
+            --section-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #0071e3, #00c7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .skill-card {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #0062c4;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Contact form styling */
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0062c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Network Infrastructure Portfolio</h1>
+            <p>Showcasing expertise in network design, configuration, and implementation</p>
+        </header>
+        
+        <section class="section">
+            <h2>About This Portfolio</h2>
+            <p>This portfolio demonstrates my expertise in network infrastructure design, configuration, and implementation with a focus on the skills required for the Network Engineer I position at the University of Florida. The projects and examples included here showcase my technical abilities in Cisco networking technologies, wireless network planning, and network automation.</p>
+            <p>The complete source code and documentation for this portfolio is available on <a href="https://github.com/yourusername/network-infrastructure-portfolio">GitHub</a>.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3>Campus Network Redesign</h3>
+                <p>A comprehensive redesign of a campus network infrastructure, including core/distribution/access layer architecture, redundancy and high-availability design, VLAN implementation, and routing configuration.</p>
+                <p>This project demonstrates my ability to design and implement complex network infrastructures while following best practices for performance, security, and reliability.</p>
+                <a href="#" class="btn">View Project Details</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Wireless Network Deployment</h3>
+                <p>Complete wireless solution for a multi-building campus, including site surveys, heat map analysis, access point placement optimization, controller configuration, and performance testing.</p>
+                <p>This project showcases my expertise in wireless network planning and implementation, with a focus on coverage, capacity, and performance optimization.</p>
+                <a href="#" class="btn">View Project Details</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Network Automation Framework</h3>
+                <p>Custom automation tools to streamline network management, including configuration management, deployment, monitoring, alerting, and documentation generation.</p>
+                <p>This project demonstrates my programming skills and ability to automate network tasks to improve efficiency and reduce human error.</p>
+                <a href="#" class="btn">View Project Details</a>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Network Design</h3>
+                    <ul>
+                        <li>Architecture planning</li>
+                        <li>Topology design</li>
+                        <li>Capacity planning</li>
+                        <li>Redundancy implementation</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Cisco Technologies</h3>
+                    <ul>
+                        <li>IOS configuration</li>
+                        <li>Routing protocols (OSPF, BGP)</li>
+                        <li>Switching and VLANs</li>
+                        <li>High availability (HSRP)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Wireless Networking</h3>
+                    <ul>
+                        <li>Site surveys and heat maps</li>
+                        <li>Controller configuration</li>
+                        <li>Access point placement</li>
+                        <li>Troubleshooting</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Network Security</h3>
+                    <ul>
+                        <li>Access control lists</li>
+                        <li>802.1X implementation</li>
+                        <li>VPN configuration</li>
+                        <li>Security best practices</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li>Network diagrams</li>
+                        <li>Implementation guides</li>
+                        <li>Troubleshooting procedures</li>
+                        <li>Technical specifications</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Automation</h3>
+                    <ul>
+                        <li>Python scripting</li>
+                        <li>API integration</li>
+                        <li>Configuration management</li>
+                        <li>Process automation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Contact</h2>
+            <p>If you'd like to discuss this portfolio or have any questions about my network engineering experience, please feel free to reach out using the form below.</p>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Network Infrastructure Portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

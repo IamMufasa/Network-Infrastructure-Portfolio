@@ -1,0 +1,40 @@
+```
++------------------+                +------------------+
+|                  |                |                  |
+|  Core Switch 1   |----------------|  Core Switch 2   |
+|  (UF-CORE-SW01)  |                |  (UF-CORE-SW02)  |
+|                  |                |                  |
++--------+---------+                +---------+--------+
+         |                                    |
+         |                                    |
+         |                                    |
+         |                                    |
++--------+---------+                +---------+--------+
+|                  |                |                  |
+| Distribution 1   |----------------| Distribution 2   |
+| (UF-DIST-SW01)   |                | (UF-DIST-SW02)   |
+|                  |                |                  |
++--------+---------+                +---------+--------+
+         |                                    |
+         |                                    |
+         |                                    |
+         |                                    |
++--------+---------+    +----------+    +-----+----------+
+|                  |    |          |    |                |
+|   Access SW 1    |----| Access 2 |----| Access SW 3    |
+| (UF-ACCESS-SW01) |    |          |    | (UF-ACCESS-SW03|
+|                  |    |          |    |                |
++------------------+    +----------+    +----------------+
+
+Legend:
+------- = 10Gbps Fiber Link
+======= = 40Gbps Fiber Link
+
+Network Details:
+- Core Layer: Cisco Catalyst 9600 Series
+- Distribution Layer: Cisco Catalyst 9500 Series
+- Access Layer: Cisco Catalyst 9300 Series
+- Routing Protocol: OSPF Area 0
+- Redundancy: HSRP for Gateway Redundancy
+- VLANs: Management, Staff, Faculty, Students, Guests, Voice
+```

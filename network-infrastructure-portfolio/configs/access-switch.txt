@@ -1,0 +1,138 @@
+! Access Switch Configuration Example
+! Demonstrates CCNA/CCNP level knowledge for Network Engineer I position
+
+hostname UF-ACCESS-SW01
+!
+! VTP Configuration
+vtp domain UF-NETWORK
+vtp mode client
+vtp version 2
+!
+! Spanning Tree Configuration
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+!
+! Management VLAN
+vlan 10
+ name MANAGEMENT
+!
+! Data VLANs
+vlan 20
+ name STAFF
+vlan 30
+ name FACULTY
+vlan 40
+ name STUDENTS
+vlan 50
+ name GUESTS
+!
+! Voice VLAN
+vlan 100
+ name VOICE
+!
+! Interface to Distribution Switch
+interface GigabitEthernet1/0/1
+ description UPLINK-TO-DIST-SW01
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,50,100
+ switchport mode trunk
+ spanning-tree guard root
+ no shutdown
+!
+! Interface to Distribution Switch (Redundant)
+interface GigabitEthernet1/0/2
+ description UPLINK-TO-DIST-SW02
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,50,100
+ switchport mode trunk
+ spanning-tree guard root
+ no shutdown
+!
+! Staff Access Port Configuration
+interface range GigabitEthernet1/0/3 - 12
+ description STAFF-ACCESS
+ switchport access vlan 20
+ switchport mode access
+ switchport voice vlan 100
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+!
+! Faculty Access Port Configuration
+interface range GigabitEthernet1/0/13 - 24
+ description FACULTY-ACCESS
+ switchport access vlan 30
+ switchport mode access
+ switchport voice vlan 100
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+!
+! Student Access Port Configuration
+interface range GigabitEthernet1/0/25 - 36
+ description STUDENT-ACCESS
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+!
+! Guest Access Port Configuration
+interface range GigabitEthernet1/0/37 - 48
+ description GUEST-ACCESS
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shutdown
+!
+! Management Interface
+interface Vlan10
+ description Management-Interface
+ ip address 10.10.20.1 255.255.255.0
+ no shutdown
+!
+! Default Gateway
+ip default-gateway 10.10.20.254
+!
+! DHCP Snooping Configuration
+ip dhcp snooping
+ip dhcp snooping vlan 20,30,40,50
+no ip dhcp snooping information option
+!
+! Port Security Configuration
+interface range GigabitEthernet1/0/3 - 48
+ switchport port-security
+ switchport port-security maximum 3
+ switchport port-security aging time 60
+ switchport port-security violation restrict
+!
+! 802.1X Configuration
+aaa new-model
+aaa authentication dot1x default group radius
+aaa authorization network default group radius
+!
+dot1x system-auth-control
+!
+interface range GigabitEthernet1/0/3 - 48
+ authentication port-control auto
+ dot1x pae authenticator
+!
+! RADIUS Configuration
+radius-server host 10.1.1.20 auth-port 1812 acct-port 1813 key UF-RADIUS-KEY
+!
+! SNMP Configuration
+snmp-server community UF-RO-STRING RO
+snmp-server location "UF Main Campus, Building 123, Room 456"
+snmp-server contact "Network Operations Center"
+!
+! Logging Configuration
+logging trap notifications
+logging 10.1.1.5
+!
+! Save Configuration
+end
+write memory
